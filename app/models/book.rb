@@ -8,6 +8,10 @@ class Book < ApplicationRecord
 		favorites.where(user_id: user.id).exists?
 	end
 
+	# def favorite?(book, user)
+	# 	book.favorites.find_by(user_id: user_id)
+	# end
+
 	def favorite_user(user_id)
 		favorites.find_by(user_id: user_id)
 	end
