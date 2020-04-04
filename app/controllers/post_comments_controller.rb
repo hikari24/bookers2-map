@@ -13,7 +13,8 @@ class PostCommentsController < ApplicationController
 		#bookの情報を取得
 		book = Book.find(params[:book_id])
 		#削除対象のコメントを探して取得
-		comment = PostComment.find(params[:id])
+		comment = current_user.post_comments.find_by(book_id: book.id)
+		# PostComment.find(params[:id])
 		if comment.destroy
 			redirect_to book_path(book)
 		end
