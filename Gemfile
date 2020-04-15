@@ -79,3 +79,4 @@ gem 'jp_prefecture'
 gem 'simple_form'
 
 gem 'dotenv-rails'
+gem 'geocoder'

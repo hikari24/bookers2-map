@@ -29,9 +29,8 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit(:name, :introduction, :profile_image, :postcode, :prefecture_name, :address_city, :address_street)
+  	params.require(:user).permit(:name, :introduction, :profile_image, :address, :latitude, :longitude)
   end
-
   #url直接防止　メソッドを自己定義してbefore_actionで発動。
    def baria_user
   	unless params[:id].to_i == current_user.id

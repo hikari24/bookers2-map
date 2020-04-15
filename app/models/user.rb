@@ -21,6 +21,14 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  #地名・住所データを返すメソッド
+  def address
+    [address_street, address_city, prefecture_code].compact.join(',')
+  end
+
+  #addressのカラムに新規登録された場合に 自動で緯度経度の情報を新規登録
+  geocoded_by :address, latitude: :latitude, longitude: :longitude
+
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
   validates :name, length: {maximum: 20, minimum: 2}
   validates :introduction, length:{maximum: 50}
